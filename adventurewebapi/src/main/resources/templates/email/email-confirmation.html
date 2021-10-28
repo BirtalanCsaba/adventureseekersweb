@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title th:remove="all">Confirm email</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+  	<p th:text="${name}">
+    </p>
+    <p>
+   		You have registered to Adventure Seekers website. 
+    </p>
+    <p>
+    	To complete your account, please confirm your email by accessing the following link:
+    </p>
+    <p th:text="${confirmationLink}"></p>
+  </body>
+</html>

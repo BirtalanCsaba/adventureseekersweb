@@ -1,0 +1,109 @@
+<div class="row g-4">
+    <div class="col-md-3 col-sm-5 p-3">
+        <div
+            id="v-pills-tab" 
+            class="nav nav-pills me-3 flex-column" 
+            role="tablist" 
+            aria-orientation="vertical">
+            <button 
+                id="v-pills-profile-tab"
+                class="nav-link"
+                type="button" 
+                role="tab" 
+                data-bs-toggle="pill" 
+                data-bs-target="#v-pills-profile" 
+                aria-controls="v-pills-profile" 
+                aria-selected="true"
+                routerLink="/settings/account"
+                routerLinkActive="active current">
+                My information
+            </button>
+            <button
+                id="v-pills-security-tab"
+                class="nav-link"
+                data-bs-toggle="pill" 
+                data-bs-target="#v-pills-security" 
+                type="button" 
+                role="tab" 
+                aria-controls="v-pills-security" 
+                aria-selected="true"
+                routerLink="/settings/account/security"
+                routerLinkActive="active current">
+                Security
+            </button>
+            <button
+                id="v-pills-notifications-tab"
+                class="nav-link"
+                data-bs-toggle="pill" 
+                data-bs-target="#v-pills-notifications" 
+                type="button" 
+                role="tab" 
+                aria-controls="v-pills-notifications" 
+                aria-selected="false"
+                routerLink="/settings/account/email-notifications"
+                routerLinkActive="active current">
+                Email notifications
+            </button>
+            <button
+                id="v-pills-cookie-tab"
+                class="nav-link"
+                data-bs-toggle="pill" 
+                data-bs-target="#v-pills-cookie" 
+                type="button" 
+                role="tab" 
+                aria-controls="v-pills-cookie" 
+                aria-selected="false"
+                routerLink="/settings/account/cookies"
+                routerLinkActive="active current">
+                Cookies
+            </button>
+            <button
+                id="v-pills-language-tab"
+                class="nav-link"
+                data-bs-toggle="pill" 
+                data-bs-target="#v-pills-language" 
+                type="button" 
+                role="tab" 
+                aria-controls="v-pills-language" 
+                aria-selected="false"
+                routerLink="/settings/account/language"
+                routerLinkActive="active current">
+                Language
+            </button>
+            <button
+                id="v-pills-adds-tab"
+                class="nav-link"
+                data-bs-toggle="pill" 
+                data-bs-target="#v-pills-adds" 
+                type="button" 
+                role="tab" 
+                aria-controls="v-pills-adds" 
+                aria-selected="false"
+                routerLink="/settings/account/adds"
+                routerLinkActive="active current">
+                Adds
+            </button>
+            <button
+                id="v-pills-support-tab"
+                class="nav-link"
+                data-bs-toggle="pill" 
+                data-bs-target="#v-pills-support" 
+                type="button" 
+                role="tab" 
+                aria-controls="v-pills-support" 
+                aria-selected="false"
+                routerLink="/settings/account/support"
+                routerLinkActive="active current">
+                Support
+            </button>
+        </div>
+    </div>
+    <div class="col">
+        <div 
+            class="p-3 tab-content"
+            id="v-pills-tabContent"
+            role="tabpanel">
+                <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

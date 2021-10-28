@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-4 col-md-8 col-sm-8">
+            <div class="card shadow">
+                <div class="card-title text-center border-bottom">
+                    <h2 class="p-3">Login</h2>
+                </div>
+                <div class="card-body">
+                    <form #f="ngForm" (ngSubmit)="signIn(f.value)">
+                        <div *ngIf="invalidLogin" class="alert alert-danger">
+                            Invalid username and/or password.
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input 
+                                type="text" 
+                                id="inputUsername" 
+                                name="userName"
+                                ngModel
+                                placeholder="Username"
+                                class="form-control" >
+                            <label for="inputUsername">Username</label>
+                        </div>
+                        <div class="form-floating mb-4">
+                            <input 
+                                type="password" 
+                                id="inputPassword"
+                                name="password"
+                                ngModel
+                                placeholder="Password"
+                                class="form-control" >
+                            <label for="inputPassword">Password</label>
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button 
+                                type="submit"
+                                class="btn btn-outline-primary">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

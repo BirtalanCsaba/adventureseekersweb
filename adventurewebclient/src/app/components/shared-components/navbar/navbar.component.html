@@ -1,0 +1,115 @@
+<nav 
+    class="navbar navbar-expand-lg navbar-light fixed-top"
+    id="app-navbar">
+    <div class="container p-2">
+        <a 
+            class="navbar-brand"
+            routerLink="/">Adventure Seekers Romania</a>
+        <button 
+            class="navbar-toggler" 
+            type="button" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#navbarContent" 
+            aria-controls="navbarContent" 
+            aria-expanded="false" 
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a 
+                        class="nav-link active" 
+                        aria-current="page"
+                        routerLink="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+            </ul>
+            <div *ngIf="!authService.isLoggedIn()" 
+                class="btn-group" 
+                role="group" 
+                aria-label="Authentication group">
+                <button 
+                    type="button"
+                    class="btn btn-outline-primary" 
+                    routerLink="/login">Login</button>
+                <button 
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    routerLink="/register">Register</button>
+            </div>
+            
+            <div *ngIf="authService.isLoggedIn()">
+                <ul class="navbar-nav mb-2 mb-lg-0 d-flex">
+                    <li class="nav-item mx-3 my-2 justify-content-center">
+                        <fa-icon [icon]="faBell" size="lg"></fa-icon>
+                    </li>
+                    <li class="nav-item">
+                        
+                        <div class="dropdown">
+                            
+                            <a 
+                                class="btn btn-default"
+                                type="button" 
+                                id="profile-dropdown" 
+                                data-bs-toggle="dropdown" 
+                                aria-expanded="false">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <img 
+                                        [src]="profileImage" 
+                                        class="rounded rounded-circle"
+                                        width="30" height="30"
+                                        id="profile-image"/>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div>{{authService.currentUser.sub}}</div>
+                                    </div>
+                                </div>
+                            </a>
+                            
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                                <li>
+                                    <button 
+                                        class="dropdown-item" 
+                                        type="button"
+                                        routerLink="/profile">
+                                        <fa-icon [icon]="faUser"></fa-icon>
+                                        Profile
+                                    </button>
+                                </li>
+                                <li>
+                                    <button class="dropdown-item" type="button">
+                                        <fa-icon [icon]="faUsers"></fa-icon>
+                                        Friends
+                                    </button>
+                                </li>
+                                <li>
+                                    <button 
+                                        type="button"
+                                        class="dropdown-item"
+                                        routerLink="/settings/account">
+                                        <fa-icon [icon]="faCog"></fa-icon>
+                                        Manage
+                                    </button>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <button 
+                                        type="button"
+                                        class="dropdown-item" 
+                                        (click)="authService.logout()">
+                                        <fa-icon [icon]="faSignOutAlt"></fa-icon>
+                                        Logout
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

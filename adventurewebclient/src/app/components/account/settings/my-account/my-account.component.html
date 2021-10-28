@@ -1,0 +1,198 @@
+<div class="row g-4">
+    <div class="col-sm-10 col-md-10 col-lg-8 col-xl-8">
+        <div
+            id="info-card" 
+            class="card">
+            <div class="card-body">
+                <h4 class="card-title">My account</h4>
+                <form
+                    [formGroup]="settingsForm" 
+                    (ngSubmit)="saveSettings()">
+                    <div class="text-end card-text">*is required</div>
+                    <div class="mb-3">
+                        <label for="inputUsername" class="form-label">Username*</label>
+                        <input
+                            formControlName="username" 
+                            type="text" 
+                            class="form-control" 
+                            id="inputUsername"
+                            [ngClass]="{
+                                'is-invalid': username?.touched && username?.invalid
+                            }">
+                            <div 
+                                *ngIf="username?.invalid" 
+                                class="invalid-feedback">
+                                <div *ngIf="username?.errors?.required">Username is required</div>
+                                <div *ngIf="username?.errors?.minlength">
+                                    Username must have at least {{username?.errors?.minlength.requiredLength}} characters
+                                </div>
+                                <div *ngIf="username?.errors?.maxlength">
+                                    Username must have at most {{username?.errors?.maxlength.requiredLength}} characters
+                                </div>
+                                <div *ngIf="username?.errors?.cannotContainSpace">
+                                    Username should not contain spaces
+                                </div>
+                                <div *ngIf="username?.errors?.shouldBeUnique">
+                                    Username already exists
+                                </div>
+                            </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputFirstName" class="form-label">First Name*</label>
+                        <input
+                            formControlName="firstname" 
+                            type="text" 
+                            class="form-control" 
+                            id="inputFirstName"
+                            [ngClass]="{
+                                'is-invalid': firstname?.touched && firstname?.invalid
+                            }">
+                        <div 
+                            *ngIf="firstname?.invalid" 
+                            class="invalid-feedback">
+                            <div *ngIf="firstname?.errors?.required">First Name is required</div>
+                            <div *ngIf="firstname?.errors?.maxlength">
+                                First Name must have at most {{firstname?.errors?.maxlength.requiredLength}} characters
+                            </div>
+                            <div *ngIf="firstname?.errors?.shouldNotStartOrEndWithWhitespace">
+                                First Name should not begin and end with space
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputLastName" class="form-label">Last Name*</label>
+                        <input
+                            formControlName="lastname" 
+                            type="text" 
+                            class="form-control" 
+                            id="inputLastName"
+                            [ngClass]="{
+                                'is-invalid': lastname?.touched && lastname?.invalid
+                            }">
+                            <div 
+                                *ngIf="lastname?.touched && lastname?.invalid" 
+                                class="invalid-feedback">
+                                <div *ngIf="lastname?.errors?.required">Last Name is required</div>
+                                <div *ngIf="lastname?.errors?.maxlength">
+                                    Last Name must have at most {{lastname?.errors?.maxlength.requiredLength}} characters
+                                </div>
+                                <div *ngIf="lastname?.errors?.shouldNotStartOrEndWithWhitespace">
+                                    Last Name should not begin and end with space
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputBirthDate" class="form-label">Birth Date*</label>
+                        <input
+                            formControlName="birthdate"
+                            id="inputBirthDate"
+                            class="form-control"
+                            #datepickerYMD="bsDatepicker"
+                            bsDatepicker
+                            [bsConfig]="{ dateInputFormat: 'YYYY/MM/DD', 
+                            adaptivePosition: true }"
+                            [ngClass]="{
+                                'is-invalid': birthdate?.touched && birthdate?.invalid
+                            }">
+                        <div 
+                            *ngIf="birthdate?.touched && birthdate?.invalid" 
+                            class="invalid-feedback">
+                            <div *ngIf="birthdate?.errors?.required">Birthdate is required</div>
+                            <div *ngIf="birthdate?.errors?.shouldNotStartOrEndWithWhitespace">
+                                Birthdate should not begin and end with space
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputCountry" class="form-label">Country</label>
+                        <input
+                            formControlName="country" 
+                            type="text" 
+                            class="form-control" 
+                            id="inputCountry"
+                            [ngClass]="{
+                                'is-invalid': country?.touched && country?.invalid
+                            }">
+                        <div 
+                            *ngIf="country?.touched && country?.invalid" 
+                            class="invalid-feedback">
+                            <div *ngIf="country?.errors?.maxlength">
+                                Country must have at most {{country?.errors?.maxlength.requiredLength}} characters
+                            </div>
+                            <div *ngIf="country?.errors?.minlength">
+                                Country must have at most {{country?.errors?.minlength.requiredLength}} characters
+                            </div>
+                            <div *ngIf="country?.errors?.shouldNotStartOrEndWithWhitespace">
+                                Country should not begin and end with space
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputCounty" class="form-label">County</label>
+                        <input
+                            formControlName="county" 
+                            type="text" 
+                            class="form-control" 
+                            id="inputCounty"
+                            [ngClass]="{
+                                'is-invalid': county?.touched && county?.invalid
+                            }">
+                        <div 
+                            *ngIf="county?.touched && county?.invalid" 
+                            class="invalid-feedback">
+                            <div *ngIf="county?.errors?.maxlength">
+                                County must have at most {{county?.errors?.maxlength.requiredLength}} characters
+                            </div>
+                            <div *ngIf="county?.errors?.minlength">
+                                County must have at most {{county?.errors?.minlength.requiredLength}} characters
+                            </div>
+                            <div *ngIf="county?.errors?.shouldNotStartOrEndWithWhitespace">
+                                County should not begin and end with space
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputCity" class="form-label">City</label>
+                        <input
+                            formControlName="city" 
+                            type="text" 
+                            class="form-control" 
+                            id="inputCity"
+                            [ngClass]="{
+                                'is-invalid': city?.touched && city?.invalid
+                            }">
+                        <div 
+                            *ngIf="city?.touched && city?.invalid" 
+                            class="invalid-feedback">
+                            <div *ngIf="city?.errors?.maxlength">
+                                City must have at most {{city?.errors?.maxlength.requiredLength}} characters
+                            </div>
+                            <div *ngIf="city?.errors?.minlength">
+                                City must have at most {{city?.errors?.minlength.requiredLength}} characters
+                            </div>
+                            <div *ngIf="city?.errors?.shouldNotStartOrEndWithWhitespace">
+                                City should not begin and end with space
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button 
+                            type="submit"
+                            class="btn btn-primary">Save Settings</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-10 col-md-10 col-lg-4 col-xl-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Membership</h4>
+                <p class="card-text">Permanently delete your account.</p>
+                <button 
+                    class="btn btn-danger"
+                    (click)="deleteAccount()">Delete account</button>
+            </div>
+        </div>
+    </div>
+</div>

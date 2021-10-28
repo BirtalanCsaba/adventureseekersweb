@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+@import "~ngx-bootstrap/datepicker/bs-datepicker.css";
+
+html {
+    margin-bottom: 100px;
+    margin-top: 90px;
+}
+
+body {
+    background-color: #F0F1F2;
+}

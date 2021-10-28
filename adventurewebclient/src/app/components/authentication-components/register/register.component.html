@@ -1,0 +1,191 @@
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-4 col-md-8 col-sm-8">
+            <div class="card shadow">
+                <div class="card-title text-center border-bottom">
+                    <h2 class="p-3">Register</h2>
+                </div>
+                <div class="card-body container">
+                    <form 
+                        [formGroup]="registrationForm" 
+                        (ngSubmit)="createAccount()">
+                        <div class="form-floating mb-3">
+                            <input 
+                                formControlName="email"
+                                type="email" 
+                                id="inputEmail" 
+                                placeholder="Email Address"
+                                class="form-control"
+                                [ngClass]="{
+                                    'is-invalid': email?.touched && email?.invalid,
+                                    'is-valid': email?.touched && email?.valid
+                                }">
+                            <label for="inputEmail" class="form-label">Email Address</label>
+                            <div 
+                                *ngIf="email?.touched && email?.invalid" 
+                                class="invalid-feedback">
+                                <div *ngIf="email?.errors?.required">Email is required</div>
+                                <div *ngIf="email?.errors?.email">Must be a valid email</div>
+                                <div *ngIf="email?.errors?.shouldByUnique">Email already taken</div>
+                                <div *ngIf="email?.errors?.cannotContainSpace">
+                                    Email should not contain spaces
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input 
+                                formControlName="username"
+                                type="text" 
+                                id="inputUsername" 
+                                placeholder="Username"
+                                class="form-control"
+                                [ngClass]="{
+                                    'is-invalid': username?.touched && username?.invalid,
+                                    'is-valid': username?.touched && username?.valid
+                                }">
+                            <label for="inputUsername" class="form-label">Username</label>
+                            <div 
+                                *ngIf="username?.touched && username?.invalid" 
+                                class="invalid-feedback">
+                                <div *ngIf="username?.errors?.required">Username is required</div>
+                                <div *ngIf="username?.errors?.minlength">
+                                    Username must have at least {{username?.errors?.minlength.requiredLength}} characters
+                                </div>
+                                <div *ngIf="username?.errors?.maxlength">
+                                    Username must have at most {{username?.errors?.maxlength.requiredLength}} characters
+                                </div>
+                                <div *ngIf="username?.errors?.shouldByUnique">Username already taken</div>
+                                <div *ngIf="username?.errors?.cannotContainSpace">
+                                    Username should not contain spaces
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input 
+                                formControlName="firstname"
+                                type="text" 
+                                id="inputFirstName" 
+                                placeholder="First Name"
+                                class="form-control"
+                                [ngClass]="{
+                                    'is-invalid': firstname?.touched && firstname?.invalid,
+                                    'is-valid': firstname?.touched && firstname?.valid
+                                }">
+                            <label for="inputFirstName" class="form-label">First Name</label>
+                            <div 
+                                *ngIf="firstname?.touched && firstname?.invalid" 
+                                class="invalid-feedback">
+                                <div *ngIf="firstname?.errors?.required">First Name is required</div>
+                                <div *ngIf="firstname?.errors?.maxlength">
+                                    First Name must have at most {{firstname?.errors?.maxlength.requiredLength}} characters
+                                </div>
+                                <div *ngIf="firstname?.errors?.shouldNotStartOrEndWithWhitespace">
+                                    First Name should not begin and end with space
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input 
+                                formControlName="lastname"
+                                type="text" 
+                                id="inputLastName" 
+                                placeholder="Last Name"
+                                class="form-control"
+                                [ngClass]="{
+                                    'is-invalid': lastname?.touched && lastname?.invalid,
+                                    'is-valid': lastname?.touched && lastname?.valid
+                                }">
+                            <label for="inputLastName" class="form-label">Last Name</label>
+                            <div 
+                                *ngIf="lastname?.touched && lastname?.invalid" 
+                                class="invalid-feedback">
+                                <div *ngIf="lastname?.errors?.required">Last Name is required</div>
+                                <div *ngIf="lastname?.errors?.maxlength">
+                                    Last Name must have at most {{lastname?.errors?.maxlength.requiredLength}} characters
+                                </div>
+                                <div *ngIf="lastname?.errors?.shouldNotStartOrEndWithWhitespace">
+                                    Last Name should not begin and end with space
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input 
+                                formControlName="password"
+                                type="password" 
+                                id="inputPassword"
+                                placeholder="Password"
+                                class="form-control"
+                                [ngClass]="{
+                                    'is-invalid': password?.touched && password?.invalid,
+                                    'is-valid': password?.touched && password?.valid
+                                }">
+                            <label for="inputPassword" class="form-label">Password</label>
+                            <div 
+                                *ngIf="password?.touched && password?.invalid" 
+                                class="invalid-feedback">
+                                <div *ngIf="password?.errors?.required">Password is required</div>
+                                <div *ngIf="password?.errors?.minlength">
+                                    Password must have at least {{password?.errors?.minlength.requiredLength}} characters
+                                </div>
+                                <div *ngIf="password?.errors?.maxlength">
+                                    Password must have at most {{password?.errors?.maxlength.requiredLength}} characters
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input 
+                                formControlName="confirmpassword"
+                                type="password" 
+                                id="inputRePassword"
+                                placeholder="RePassword"
+                                class="form-control"
+                                [ngClass]="{
+                                    'is-invalid': confirmpassword?.touched && (confirmpassword?.invalid || registrationForm.errors?.matchPassword == true),
+                                    'is-valid': confirmpassword?.touched && (confirmpassword?.valid || registrationForm.errors?.matchPassword == null)
+                                }">
+                            <label for="inputRePassword">Confirm Password</label>
+                            <div 
+                                *ngIf="confirmpassword?.touched && (confirmpassword?.invalid || registrationForm.errors?.matchPassword)" 
+                                class="invalid-feedback">
+                                <div *ngIf="confirmpassword?.errors?.required">
+                                    Confirm Password is required
+                                </div>
+                                <div *ngIf="confirmpassword?.errors?.matchPassword == null">
+                                    The passwords must match
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input
+                                formControlName="birthdate"
+                                id="inputDatePicker"
+                                class="form-control"
+                                #datepickerYMD="bsDatepicker"
+                                bsDatepicker
+                                [bsConfig]="{ dateInputFormat: 'YYYY/MM/DD', 
+                                adaptivePosition: true }"
+                                [ngClass]="{
+                                    'is-invalid': birthdate?.touched && birthdate?.invalid,
+                                    'is-valid': birthdate?.touched && birthdate?.valid
+                                }">
+                            <label for="inputDatePicker">Birth Date</label>
+                            <div 
+                                *ngIf="birthdate?.touched && birthdate?.invalid" 
+                                class="invalid-feedback">
+                                <div *ngIf="birthdate?.errors?.required">Birth Date is required</div>
+                                <div *ngIf="birthdate?.errors?.shouldNotStartOrEndWithWhitespace">
+                                    Birthdate should not begin and end with space
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <button 
+                                type="submit"
+                                class="btn btn-outline-secondary">Create account</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,144 @@
+<div class="row gx-4 gy-2">
+    <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8">
+        <div
+            id="email-card" 
+            class="card">
+            <div class="card-body">
+                <h4 class="card-title">Change your email</h4>
+                <p class="card-text">
+                    You will have <b>7 days</b> to confirm your email.
+                    After this period, the previous email remains unchanged.
+                </p>
+                <hr>
+                <p class="card-text">
+                    Current email: {{ currentEmail }}
+                </p>
+                <form
+                    [formGroup]="changeEmailForm" 
+                    (ngSubmit)="updateEmail()">
+                    <div class="row justify-content-between g-3">
+                        <div class="col-8">
+                            <input
+                                formControlName="email"
+                                type="email" 
+                                class="form-control" 
+                                id="inputEmail"
+                                placeholder="Email"
+                                [ngClass]="{
+                                    'is-invalid': email?.touched && email?.invalid
+                                }">
+                            <div 
+                                *ngIf="email?.invalid" 
+                                class="invalid-feedback">
+                                <div *ngIf="email?.errors?.required">Email is required</div>
+                                <div *ngIf="email?.errors?.email">Must be a valid email</div>
+                                <div *ngIf="email?.errors?.cannotContainSpace">
+                                    Email should not contain spaces
+                                </div>
+                                <div *ngIf="email?.errors?.shouldBeUnique">
+                                    Email already exists
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary">
+                                Change
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8">
+        <div
+            id="password-card" 
+            class="card">
+            <div class="card-body">
+                <h4 class="card-title">Change your password</h4>
+                <form>
+                    <p class="card-text">
+                        After changing your password you will be logged out.
+                    </p>
+                    <p class="card-text text-danger">
+                        <b>Caution:</b> This operation cannot be undone.
+                    </p>
+                    <div class="mb-3">
+                        <input 
+                            type="password" 
+                            id="inputPassword"
+                            placeholder="Password"
+                            class="form-control"
+                            [ngClass]="{
+                                
+                            }">
+                    </div>
+                    <div class="mb-3">
+                        <input 
+                            type="password" 
+                            id="inputRePassword"
+                            placeholder="RePassword"
+                            class="form-control"
+                            [ngClass]="{
+
+                            }">
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary">
+                            Change
+                        </button>
+                    </div>                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8">
+        <div
+            id="tfa-card" 
+            class="card">
+            <div class="card-body">
+                <div class="row justify-content-between">
+                    <div class="col-auto">
+                        <h4 class="card-title">Two-factor authentication</h4>
+                    </div>
+                    <div class="col-auto">
+                        <toggle-button class="text-end"></toggle-button>
+                    </div>
+                </div>
+                <p class="card-text">
+                    It is recommended for additional security to your account.
+                    <br>
+                    You will be asked to enter a code sent via email after logging in.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8">
+        <div
+            id="app-card" 
+            class="card">
+            <div class="card-body">
+                <h4 class="card-title">Applications</h4>
+                <p class="card-text">
+                    The following applications have been granted access to your account.
+                </p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Application</th>
+                            <th scope="col">Device</th>
+                            <th scope="col">Last loggin</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
